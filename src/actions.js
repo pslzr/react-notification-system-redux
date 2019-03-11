@@ -13,12 +13,13 @@ import {RNS_SHOW_NOTIFICATION, RNS_HIDE_NOTIFICATION, RNS_REMOVE_ALL_NOTIFICATIO
 //     }
 //   }
 // }
+var _curId = new Date().getUTCMilliseconds();
 
 export function show(opts = {}, level = 'success') {
   return {
     type: RNS_SHOW_NOTIFICATION,
     ...opts,
-    uid: opts.uid || Date.now(),
+    uid: opts.uid || ++_curId,
     level
   };
 }
